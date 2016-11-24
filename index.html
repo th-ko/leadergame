@@ -2,12 +2,106 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Snakes and Leaders</title>
+  <title>Leiterspiel</title>
   <base href="/">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
-  <link rel="stylesheet" href="main.css">
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+    }
+    .hide {
+      display: none !important;
+    }
+    .container {
+      display:flex;
+      flex-direction: row;
+      justify-content: center;
+      /*border: 2px solid red;*/
+    }
+    .board {
+      position: relative;
+    }
+    .board img {
+      height: 100vh;
+      width: 100vh;
+    }
+
+    .diceImg {
+      margin: 12px;
+      width: 64px;
+      height: 64px;
+      background: url('dice.png');
+      background-size: 330%;
+    }
+    .diceImg.s1 {
+      background-position: 4% 2%;
+    }
+    .diceImg.s2 {
+      background-position: 50% 2%;
+    }
+    .diceImg.s3 {
+      background-position: 99% 2%;
+    }
+    .diceImg.s4 {
+      background-position: 3% 94%;
+    }
+    .diceImg.s5 {
+      background-position: 50% 94%;
+    }
+    .diceImg.s6 {
+      background-position: 99% 94%;
+    }
+
+    .sidenav {
+      flex:1;
+      justify-content: center;
+      /*border: 2px solid green;*/
+    }
+    .player {
+      border-radius: 50%;
+      width: 6vh;
+      height: 6vh;
+      top: 2vh;
+      left: 2vh;
+    }
+    .board .player {
+      position: absolute;
+      transform: translate(0vh, 90vh);
+      will-change: transform;
+      /*box-shadow: 3px 4px 16px rgba(0, 0, 0, 0.7);*/
+      box-shadow: 3px 3px 14px rgba(0, 0, 0, 0.9);
+      z-index: 2;
+    }
+    .sidenav .player {
+      margin: 16px;
+      display: block;
+    }
+    .player.red {
+      background: linear-gradient(135deg, palevioletred, darkred);
+      border: 3px solid darkred;
+    }
+    .player.blue {
+      background: linear-gradient(135deg, aliceblue, blue);
+      border: 3px solid blue;
+    }
+    .player.green {
+      background: linear-gradient(135deg, palegreen, darkgreen);
+      border: 3px solid darkgreen;
+    }
+    .player.yellow {
+      background: linear-gradient(135deg, lightyellow, orange);
+      border: 3px solid orange;
+    }
+    button {
+      padding: 12px;
+      margin: 12px;
+      font-size: 24px;
+      display: block;
+    }
+  </style>
 </head>
 <body>
   <div class="container">
@@ -20,12 +114,31 @@
 
     </div>
     <div class="sidenav">
+
       <div class="container">
-        <span class="player hide"></span>
-        <div class="diceImg s1 hide"></div>
-        <div class="diceImg s1 hide"></div>
+        <span class="player red"></span>
+        <div class="diceImg s1"></div>
+        <div class="diceImg s1"></div>
+        <button id="roll" onclick="roll()">Würfeln</button>
       </div>
-      <button id="roll" onclick="roll()">Würfeln</button>
+      <div class="container">
+        <span class="player green"></span>
+        <div class="diceImg s1"></div>
+        <div class="diceImg s1"></div>
+        <button id="roll" onclick="roll()">Würfeln</button>
+      </div>
+      <div class="container">
+        <span class="player yellow"></span>
+        <div class="diceImg s1"></div>
+        <div class="diceImg s1"></div>
+        <button id="roll" onclick="roll()">Würfeln</button>
+      </div>
+      <div class="container">
+        <span class="player blue"></span>
+        <div class="diceImg s1"></div>
+        <div class="diceImg s1"></div>
+        <button id="roll" onclick="roll()">Würfeln</button>
+      </div>
     </div>
   </div>
   <script src="index.js"></script>

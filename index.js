@@ -57,54 +57,6 @@ class Spielfigur {
     return isPasch;
   }
 
-  applyLaddersAndSnakes(field) {
-    // ladder
-    switch (field) {
-      case 28: return 36;
-      case 51: return 91;
-      case 57: return 75;
-      case 60: return 83;
-      case 63: return 85;
-      case 67: return 88;
-      case 76: return 94;
-      case 78: return 82;
-    }
-
-    // snake
-    switch (field) {
-      case 99: return 29;
-      case 95: return 26;
-      case 92: return 34;
-      case 84: return 13;
-      case 73: return 1;
-      case 62: return 21;
-      case 69: return 31;
-      case 58: return 19;
-      case 52: return 7;
-      case 41: return 4;
-      case 49: return 11;
-      case 44: return 23;
-    }
-    return field;
-  }
-
-  showNode(nodes, show) {
-    for (const node of nodes) {
-      if (show) {
-        node.classList.remove('hide')
-      }
-      else {
-        node.classList.add('hide')
-      }
-    }
-  }
-
-  showUI(isMoving) {
-    btn.disabled = isMoving;
-    this.showNode([playerIndicator], !isMoving);
-    this.showNode(diceNodes, isMoving);
-  }
-
   moveTo(from, to, next) {
     this.field = next;
     this.showUI(true);
@@ -159,6 +111,54 @@ class Spielfigur {
     return `translate(${x}vh, ${y}vh)`;
   }
 
+  applyLaddersAndSnakes(field) {
+    // ladder
+    switch (field) {
+      case 28: return 36;
+      case 51: return 91;
+      case 57: return 75;
+      case 60: return 83;
+      case 63: return 85;
+      case 67: return 88;
+      case 76: return 94;
+      case 78: return 82;
+    }
+
+    // snake
+    switch (field) {
+      case 99: return 29;
+      case 95: return 26;
+      case 92: return 34;
+      case 84: return 13;
+      case 73: return 1;
+      case 62: return 21;
+      case 69: return 31;
+      case 58: return 19;
+      case 52: return 7;
+      case 41: return 4;
+      case 49: return 11;
+      case 44: return 23;
+    }
+    return field;
+  }
+
+  showNode(nodes, show) {
+    for (const node of nodes) {
+      if (show) {
+        node.classList.remove('hide')
+      }
+      else {
+        node.classList.add('hide')
+      }
+    }
+  }
+
+  showUI(isMoving) {
+    btn.disabled = isMoving;
+    // this.showNode([playerIndicator], !isMoving);
+    // this.showNode(diceNodes, isMoving);
+  }
+
 }
 
 
@@ -177,5 +177,5 @@ function roll() {
     rolls++;
   }
   var nextPlayer = player[rolls % player.length];
-  playerIndicator.className = 'hide player '+ nextPlayer.color;
+  // playerIndicator.className = 'hide player '+ nextPlayer.color;
 }
